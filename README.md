@@ -8,4 +8,3 @@ Clone the [repository](https://github.com/mjbuchman/secret-santa) and run the Se
 
 ## Resources Used
 - Swing GUI framework
-- Nimbus Look and Feel
