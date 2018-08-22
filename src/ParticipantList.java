@@ -23,25 +23,25 @@ public class ParticipantList {
     }
     
     public void assignParticipants() {
-    	int[] peopleUsed = new int[list.size()];
-    	Arrays.fill(peopleUsed,  -1);
-    	
     	for (int i = 0; i < list.size(); i++) {
     		while (list.get(i).getTarget() == -1) {
     			int index = randomGenerator.nextInt(list.size());
     			list.get(i).setTarget(index);
-    			if (list.get(i).getName().equals(list.get(index).getName())) {
+    			if ((list.get(i).getName()).equals(list.get(index).getName())) {
     				list.get(i).setTarget(-1);
     			}
-    			
-    			for (int j = 0; j < peopleUsed.length; j++) {
-        			if(list.get(i).getTarget() == peopleUsed[j]) {
-        				list.get(i).setTarget(-1);
-        			}
-        		}
     		}
-    		
-    		peopleUsed[i] = i;
+  
     	}
+    	
+    	checkDuplicates();
+    }
+    
+    public void checkDuplicates() {
+		for (int i = 0; i < list.size(); i++) {
+			if(list.get(i).getTarget() == i) {
+				this.assignParticipants();
+			}
+		}
     }
 }
