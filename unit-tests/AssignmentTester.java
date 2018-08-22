@@ -17,10 +17,7 @@ public class AssignmentTester {
 		people.add(p6);
 		
 		people.assignParticipants();
-		
-		for (int i = 0; i < 6; i++) {
-			people.getList().get(i).printResults(people);
-		}
+		people.printResults();
 	}
 
 }
