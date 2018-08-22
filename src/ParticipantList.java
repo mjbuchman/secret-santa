@@ -57,9 +57,13 @@ public class ParticipantList {
     		if (list.get(i).getTarget() == list.size()-1) {
     			flag = true;
     		}
-    	}
-    	
-    	
+    	}	
+    }
+    
+    public void printResults() {
+    	for (int i = 0; i < list.size(); i++) {
+        	System.out.println(list.get(i).getName() + " : " + list.get(i).getEmail() + " ---> " + list.get(list.get(i).getTarget()).getName());
+		}
     }
    
 }
