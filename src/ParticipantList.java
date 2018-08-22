@@ -30,18 +30,19 @@ public class ParticipantList {
     			if ((list.get(i).getName()).equals(list.get(index).getName())) {
     				list.get(i).setTarget(-1);
     			}
+    			
+        		for (int j = 0; j < list.size(); j++) {
+    				if (i != j) {
+    					if (list.get(i).getTarget() == list.get(j).getTarget()) {
+    						list.get(i).setTarget(-1);
+    					}
+    				}
+    			}
     		}
-  
+    		
     	}
     	
-    	checkDuplicates();
+    	
     }
-    
-    public void checkDuplicates() {
-		for (int i = 0; i < list.size(); i++) {
-			if(list.get(i).getTarget() == i) {
-				this.assignParticipants();
-			}
-		}
-    }
+   
 }
