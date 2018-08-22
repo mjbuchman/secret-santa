@@ -4,7 +4,7 @@ public class Participant {
     private int target;
 
     /**
-    * Constructor for instantiating a job
+    * Constructor for instantiating a participant
     * @param name: The provided name for this participant
     * @param email: The provided email for this participant
     */
@@ -30,7 +30,7 @@ public class Participant {
     	this.target = target;
     }
     
-    public void printResults(ParticipantList people) {
-    	System.out.println(this.getName() + " : " + this.getEmail() + " ---> " + people.getList().get(this.target).getName());
+    public void print() {
+    	System.out.println(this.getName() + " : " + this.getEmail() + " : " + this.getTarget());
     }
 }
