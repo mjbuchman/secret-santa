@@ -23,30 +23,37 @@ public class ParticipantList {
     }
     
     public void assignParticipants() {
-    	boolean flag = false;
+    	boolean flag = false;  //Indicates whether or not the last participant has been assigned yet
+    	
+    	/* Set each participants target one at a time */
     	for (int i = 0; i < list.size(); i++) {
-    		if (flag == false && i == list.size()-1) {
+    		if (flag == false && i == list.size()-1) {  // If on last participant and that person has yet to be assigned
     			for (int k = 0; k < list.size(); k++) {
-    				list.get(k).setTarget(-1);
+    				list.get(k).setTarget(-1);  // Reset all participants targets
     			}
-    			assignParticipants();
-    			return;
+    			assignParticipants();  // Reassign targets
+    			return; 
     		}
     		
+    		/* Loop through while participant does not have a valid target */
     		while (list.get(i).getTarget() == -1) {
     			int index = randomGenerator.nextInt(list.size());
     			list.get(i).setTarget(index);
+    			
+    			/* Check if participant was assigned themselves */
     			if ((list.get(i).getName()).equals(list.get(index).getName())) {
     				list.get(i).setTarget(-1);
     			}
     			
+    			/* Iterate through all participants and check for duplicate assignments */
         		for (int j = 0; j < list.size(); j++) {
 					if (i!= j && list.get(i).getTarget() == list.get(j).getTarget()) {
 						list.get(i).setTarget(-1);
 					}
     			}
     		}
-    		System.out.println(list.get(i).getTarget());
+    		
+    		/* Sets true if last participant has been assigned */
     		if (list.get(i).getTarget() == list.size()-1) {
     			flag = true;
     		}
