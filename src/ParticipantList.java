@@ -14,7 +14,18 @@ public class ParticipantList {
         randomGenerator = new Random();
     }
     
+    public ArrayList<Participant> getList(){
+    	return list;
+    }
+    
+    public void add(Participant p) {
+    	list.add(p);
+    }
+    
     public void assignParticipants() {
+    	int[] peopleUsed = new int[list.size()];
+    	Arrays.fill(peopleUsed,  -1);
+    	
     	for (int i = 0; i < list.size(); i++) {
     		while (list.get(i).getTarget() == -1) {
     			int index = randomGenerator.nextInt(list.size());
@@ -22,7 +33,15 @@ public class ParticipantList {
     			if (list.get(i).getName().equals(list.get(index).getName())) {
     				list.get(i).setTarget(-1);
     			}
+    			
+    			for (int j = 0; j < peopleUsed.length; j++) {
+        			if(list.get(i).getTarget() == peopleUsed[j]) {
+        				list.get(i).setTarget(-1);
+        			}
+        		}
     		}
+    		
+    		peopleUsed[i] = i;
     	}
     }
 }
