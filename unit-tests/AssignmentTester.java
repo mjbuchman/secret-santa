@@ -19,7 +19,7 @@ public class AssignmentTester {
 		people.assignParticipants();
 		
 		for (int i = 0; i < 6; i++) {
-			people.getList().get(i).print();
+			people.getList().get(i).printResults(people);
 		}
 	}
 
