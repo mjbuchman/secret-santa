@@ -23,7 +23,16 @@ public class ParticipantList {
     }
     
     public void assignParticipants() {
+    	boolean flag = false;
     	for (int i = 0; i < list.size(); i++) {
+    		if (flag == false && i == list.size()-1) {
+    			for (int k = 0; k < list.size(); k++) {
+    				list.get(k).setTarget(-1);
+    			}
+    			assignParticipants();
+    			return;
+    		}
+    		
     		while (list.get(i).getTarget() == -1) {
     			int index = randomGenerator.nextInt(list.size());
     			list.get(i).setTarget(index);
@@ -32,14 +41,15 @@ public class ParticipantList {
     			}
     			
         		for (int j = 0; j < list.size(); j++) {
-    				if (i != j) {
-    					if (list.get(i).getTarget() == list.get(j).getTarget()) {
-    						list.get(i).setTarget(-1);
-    					}
-    				}
+					if (i!= j && list.get(i).getTarget() == list.get(j).getTarget()) {
+						list.get(i).setTarget(-1);
+					}
     			}
     		}
-    		
+    		System.out.println(list.get(i).getTarget());
+    		if (list.get(i).getTarget() == list.size()-1) {
+    			flag = true;
+    		}
     	}
     	
     	
