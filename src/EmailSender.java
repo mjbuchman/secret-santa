@@ -16,9 +16,9 @@ public class EmailSender {
 	private String recepientEmail, targetName;
 	
     /**
-    * Constructor for instantiating a job
-    * @param name: The provided name for this participant
-    * @param email: The provided email for this participant
+    * Constructor for instantiating an EmailSender
+    * @param recepientEmail: The email of the recepient
+    * @param targetName: The recepient's secret santa person
     */
     public EmailSender(String email, String name) {
     	recepientEmail = email;
