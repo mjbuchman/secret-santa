@@ -18,6 +18,13 @@ public class ParticipantList {
     	return list;
     }
     
+    public int size() {
+    	return this.list.size();
+    }
+    
+    public Participant get(int index) {
+    	return list.get(index);
+    }
     public void add(Participant p) {
     	list.add(p);
     }
