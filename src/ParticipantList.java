@@ -7,7 +7,8 @@ public class ParticipantList {
 
     /**
     * Constructor for instantiating a job
-    * @param list:
+    * @param list: ArrayList to hold all participants
+    * @param randomGenerator: Random object to choose a random index
     */
     public ParticipantList() {
     	list = new ArrayList<>();
