@@ -37,7 +37,7 @@ public class EmailSender {
     	final String userName = "secretsantajapp@gmail.com";
     	final String password = "Christmas!123";
     	String subject = "Secret Santa Results";
-    	String message = "Your secret santa person is: " + this.getName();
+    	String message = createMessage();
     	
         // sets SMTP server properties
         Properties properties = new Properties();
@@ -68,5 +68,13 @@ public class EmailSender {
  
         // sends the e-mail
         Transport.send(msg);
+    }
+    
+    public String createMessage() {
+    	return "<p style=\"background-color: #21e688; border: solid #ff4f4f 30px; height: 400px; padding-top: 340px; text-align: center; "
+    			+ "font-size: 48px;color: white;\">You have <span style=\"color: #ff4f4f\"> " + this.getName() + " </span>for Secret Santa!</p><p style=\"font-size: 24px;color: black;margin-top: 50%;\">";
+    	
+    						
+
     }
 }
