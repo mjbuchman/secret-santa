@@ -5,8 +5,7 @@ public class EmailTester {
             test.sendHtmlEmail();
             System.out.println("Email sent.");
         } catch (Exception ex) {
-            System.out.println("Failed to sent email.");
-            ex.printStackTrace();
+            System.out.println("Failed to send email.");
         }
 	}
 
