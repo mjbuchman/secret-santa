@@ -90,7 +90,7 @@ public class SecretSantaAppUI {
 		btnSend.setBackground(Color.LIGHT_GRAY);
 		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				for(int i = 0; i < boxes.size();i++) {
+				for(int i = 0; i < boxes.size(); i++) {
 					if(boxes.get(i).getText().equals("")) {
 						JFrame popup = new JFrame();
 						JOptionPane error = new JOptionPane();
@@ -118,6 +118,7 @@ public class SecretSantaAppUI {
 				            JFrame popup2 = new JFrame();
 							JOptionPane emailSuccess = new JOptionPane();
 							emailSuccess.showMessageDialog(popup2, "Emails sent successfully!");
+							participants.removeAll();
 			            }
 			        } catch (Exception ex) {
 			            System.out.println("Failed to send email.");
@@ -126,6 +127,7 @@ public class SecretSantaAppUI {
 				            JFrame popup3 = new JFrame();
 							JOptionPane emailFailure = new JOptionPane();
 							emailFailure.showMessageDialog(popup3, "Emails failed to send. Please review your info and try again.");
+							participants.removeAll();
 			            }
 			        }
 				}
