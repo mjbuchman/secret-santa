@@ -14,9 +14,11 @@ public class SecretSantaAppUI {
 	private JTextField addedEmailField;
 	private Participant newParticipant;
 	private ParticipantList participants = new ParticipantList();
+	private int successCount = 0;
+	private int failCount = 0;
 
-	public int nextStartPoint = 150;
-	public int buttonPosition = 391;
+	public int nextStartPoint = 190;
+	public int buttonPosition = 431;
 	public static LinkedList<JTextField> boxes = new LinkedList<>();
 	public static JButton btnSend, btnAddLine, btnDeleteLine;
 	/**
@@ -66,6 +68,16 @@ public class SecretSantaAppUI {
 			JLabel picLabel = new JLabel(new ImageIcon(image));
 			picLabel.setBounds(0, 0, 600, 120);
 			frame.getContentPane().add(picLabel);
+			
+			image = ImageIO.read(new File("images/name.png"));
+			JLabel picLabel2 = new JLabel(new ImageIcon(image));
+			picLabel2.setBounds(120, 130, 117, 57);
+			frame.getContentPane().add(picLabel2);
+			
+			image = ImageIO.read(new File("images/email.png"));
+			JLabel picLabel3 = new JLabel(new ImageIcon(image));
+			picLabel3.setBounds(355, 130, 117, 57);
+			frame.getContentPane().add(picLabel3);
 		} catch (IOException ex) {
 			System.out.println("Image could not be loaded");
 		}
@@ -101,10 +113,25 @@ public class SecretSantaAppUI {
 					try {
 			            test.sendHtmlEmail();
 			            System.out.println("Email sent.");
+			            successCount++;
+			            if(successCount > 2) {
+				            JFrame popup2 = new JFrame();
+							JOptionPane emailSuccess = new JOptionPane();
+							emailSuccess.showMessageDialog(popup2, "Emails sent successfully!");
+			            }
 			        } catch (Exception ex) {
 			            System.out.println("Failed to send email.");
+			            failCount++;
+			            if(failCount > 2) {
+				            JFrame popup3 = new JFrame();
+							JOptionPane emailFailure = new JOptionPane();
+							emailFailure.showMessageDialog(popup3, "Emails failed to send. Please review your info and try again.");
+			            }
 			        }
 				}
+				
+				successCount = 0;
+				failCount = 0;
 			}
 		});
 		btnSend.setBounds(396, buttonPosition, 110, 28);
