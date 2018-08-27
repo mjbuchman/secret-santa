@@ -30,6 +30,10 @@ public class ParticipantList {
     	list.add(p);
     }
     
+    public void removeAll() {
+    	list.removeAll(list);
+    }
+    
     public void assignParticipants() {
     	boolean flag = false;  //Indicates whether or not the last participant has been assigned yet
     	
