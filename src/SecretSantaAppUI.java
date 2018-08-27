@@ -95,7 +95,21 @@ public class SecretSantaAppUI {
 						JFrame popup = new JFrame();
 						JOptionPane error = new JOptionPane();
 						error.showMessageDialog(popup, "Please do not leave any boxes blank");
+						participants.removeAll();
 						return;
+					}
+					
+				}
+				
+				for(int i = 0; i < boxes.size(); i+=2) {
+					for(int j = 0; j < boxes.size(); j+=2) {
+						if( (boxes.get(i).getText()).equals(boxes.get(j).getText()) && i != j ) {
+							JFrame popup2 = new JFrame();
+							JOptionPane sameNameError = new JOptionPane();
+							sameNameError.showMessageDialog(popup2, "Please do not repeat names. Modify names and try again.");
+							participants.removeAll();
+							return;
+						}
 					}
 				}
 				
@@ -115,18 +129,18 @@ public class SecretSantaAppUI {
 			            System.out.println("Email sent.");
 			            successCount++;
 			            if(successCount > 2) {
-				            JFrame popup2 = new JFrame();
+				            JFrame popup3 = new JFrame();
 							JOptionPane emailSuccess = new JOptionPane();
-							emailSuccess.showMessageDialog(popup2, "Emails sent successfully!");
+							emailSuccess.showMessageDialog(popup3, "Emails sent successfully!");
 							participants.removeAll();
 			            }
 			        } catch (Exception ex) {
 			            System.out.println("Failed to send email.");
 			            failCount++;
 			            if(failCount > 2) {
-				            JFrame popup3 = new JFrame();
+				            JFrame popup4 = new JFrame();
 							JOptionPane emailFailure = new JOptionPane();
-							emailFailure.showMessageDialog(popup3, "Emails failed to send. Please review your info and try again.");
+							emailFailure.showMessageDialog(popup4, "Emails failed to send. Please review your info and try again.");
 							participants.removeAll();
 			            }
 			        }
