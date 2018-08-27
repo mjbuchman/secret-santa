@@ -26,17 +26,10 @@ public class SecretSantaAppUI {
 	 */
 	public static void main(String[] args) {
 		try {
-			UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel"); 
-		} catch (UnsupportedLookAndFeelException e) {
-			System.out.println("Unsupported Look and Feel");
-		} catch (ClassNotFoundException e) {
-			System.out.println("Look and Feel Class Not Found");
-		} catch (InstantiationException e) {
-			System.out.println("Instantiation Exception Thrown");
-		} catch (IllegalAccessException e) {
-			System.out.println("Illegal Access Exception Thrown");
+			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+		} catch (Throwable e) {
+			e.printStackTrace();
 		}
-
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
